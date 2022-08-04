@@ -1,0 +1,40 @@
+{
+  "name": "divici-meadery-be",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "migrate:dev": "knex migrate:latest",
+    "rollback:dev": "knex migrate:rollback",
+    "seed:dev": "knex seed:run",
+    "resetdb": "npm run rollback && npm run migrate && npm run seed",
+    "migrate:prod": "heroku run knex migrate:latest -a meadery",
+    "rollback:prod": "heroku run knex migrate:rollback -a meadery",
+    "database:prod": "heroku pg:psql -a meadery",
+    "seed:prod": "heroku run knex seed:run -a meadery",
+    "test": "cross-env NODE_ENV=testing jest --watchAll --verbose --runInBand",
+    "deploy": "git push heroku main"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Divici/divici-meadery-be.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Divici/divici-meadery-be/issues"
+  },
+  "homepage": "https://github.com/Divici/divici-meadery-be#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "helmet": "^5.1.1",
+    "knex": "^2.2.0",
+    "nodemon": "^2.0.19",
+    "pg": "^8.7.3"
+  }
+}
