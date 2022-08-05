@@ -1,12 +1,8 @@
-const express = require("express")
-const server = express();
+const dotenv = require('dotenv').config()
+const server = require('./api/server.js');
 
-const PORT = 5000;
+const PORT = process.env.PORT
 
-server.get('/', (req, res) => {
-    res.json( { hello: "world" } );
-})
-
-server.listen(5000, () => {
-    console.log(`\n*** Server running on http://localhost:${PORT}`)
-})
+server.listen(PORT, () => {
+  console.log(`\n=== Server listening on port ${PORT} ===\n`);
+});
